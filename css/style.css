@@ -1285,9 +1285,8 @@ a#myBtn {
   width: 1px;
 }
 
-.row-services {
+.row-services:nth-last-child() {
   margin: -4rem -2.5rem 0 -2.5rem;
-  border-top: 2px solid rgb(128 128 128 / 33%);
 }
 
 .col-service {
@@ -1302,6 +1301,21 @@ a#myBtn {
 
 .col-service p {
   margin-bottom: 0;
+}
+
+.col-service col-sm-12 col-lg-12 wow fadeInUp {
+  text-align: center;
+}
+
+.checksheet {
+  text-align: center;
+  padding: 30px;
+  background: #d21045;
+  color: white !;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 20px;
+  text-decoration: none;
 }
 
 
