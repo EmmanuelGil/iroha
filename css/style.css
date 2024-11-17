@@ -3365,7 +3365,7 @@ div.footer-flex>p {
   }
 
   .grid-principal {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   .grid-documents {
@@ -3385,7 +3385,15 @@ div.footer-flex>p {
   }
 
   .width-400 {
-    width: 400px;
+    width: 300px;
+  }
+
+  .contenedor-grid-2 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-principal {
+    font-size: 10px;
   }
 
 }
