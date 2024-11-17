@@ -2228,7 +2228,163 @@ section#clients {
   border-color: transparent;
 }
 
+.contenedor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Tres columnas con igual tamaño */
+  gap: 10px;
+  /* Espaciado entre las celdas */
+  text-align: left;
+  background: #e4e5d1;
+  padding: 20px 20px;
+  color: black;
+  line-height: normal;
+}
 
+.contenedor-grid img {
+  max-width: 100%;
+}
+
+.contenedor-grid-2 {
+  background: #f0d9cc;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Tres columnas con igual tamaño */
+  gap: 10px;
+  /* Espaciado entre las celdas */
+  text-align: left;
+  padding: 20px 20px;
+  color: black;
+  line-height: normal;
+}
+
+.tabla-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+  background: #e4e5d1;
+  color: black;
+}
+
+.tabla-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+  background: #f0d9cc;
+  color: black;
+}
+
+.contenedor-grid-2 img {
+  max-width: 100%;
+}
+
+.grid-principal {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* 5 columnas iguales */
+}
+
+.cabeza-principal {
+  grid-column: span 5;
+  /* Hace que el encabezado ocupe las 5 columnas */
+  background-color: green;
+  /* Fondo verde para el encabezado */
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+}
+
+.item-dato {
+  border: 1px solid black;
+  /* Fondo negro para las celdas */
+  color: black;
+  text-align: center;
+}
+
+.encabezado {
+  font-weight: bold;
+}
+
+.contenido {}
+
+.entrance {
+  text-align: left;
+}
+
+.tabla-grid div[colspan="2"] {
+  grid-column: span 2;
+  /* Hace que la celda con colspan="2" ocupe ambas columnas */
+}
+
+.tabla-grid-2 div[colspan="2"] {
+  grid-column: span 2;
+  /* Hace que la celda con colspan="2" ocupe ambas columnas */
+}
+
+.grid-documents {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 columnas */
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.header-documents {
+  grid-column: span 4;
+  /* Encabezado ocupa las 4 columnas */
+  background-color: #4CAF50;
+  /* Fondo verde para el encabezado */
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.doc-item {
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  word-wrap: break-word;
+  border: 1px solid black;
+}
+
+.grid-admission {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columnas */
+  /* Espaciado entre las celdas */
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.header-admission {
+  grid-column: span 2;
+  /* Encabezado ocupa las 2 columnas */
+  background-color: #4CAF50;
+  /* Fondo verde para el encabezado */
+  color: white;
+  text-align: center;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.admission-item {
+  /* Fondo negro para las celdas */
+  color: black;
+  text-align: left;
+  font-size: 16px;
+  word-wrap: break-word;
+  padding: 10px 10px;
+  border: 1px solid black;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
 
 /* 3.8 Section Contacts */
 section.section:nth-child(2) {
@@ -3202,6 +3358,36 @@ div.footer-flex>p {
   .slider-nav {
     right: -20%;
   }
+
+  .contenedor-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-principal {
+    font-size: 13px;
+  }
+
+  .grid-documents {
+    grid-template-columns: repeat(2, 1fr);
+    /* Cambiar a 2 columnas en pantallas más pequeñas */
+  }
+
+  .header-documents {
+    font-size: 14px;
+    grid-column: span 2;
+  }
+
+  .doc-item {
+    font-size: 12px;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .width-400 {
+    width: 400px;
+  }
+
 }
 
 
