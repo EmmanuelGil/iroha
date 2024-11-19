@@ -1398,6 +1398,9 @@ a#myBtn {
   transform: none;
 }
 
+.visible-2 {
+  display: none;
+}
 
 
 /* 3.3 Section About */
@@ -1531,6 +1534,10 @@ a#myBtn {
 
 .col-service p {
   margin-bottom: 0;
+}
+
+.visible-2 {
+  display: none !important;
 }
 
 .col-service col-sm-12 col-lg-12 wow fadeInUp {
@@ -3394,6 +3401,14 @@ div.footer-flex>p {
 
   .grid-principal {
     font-size: 10px;
+  }
+
+  .visible-1 {
+    display: none;
+  }
+
+  .visible-2 {
+    display: grid !important;
   }
 
 }
