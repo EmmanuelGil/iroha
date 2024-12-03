@@ -3323,8 +3323,13 @@ div.footer-flex>p {
   .slide-text {
     left: 45%;
   }
-  .flex{
+
+  .flex {
     flex-direction: column;
+  }
+
+  .grid-admission {
+    padding-bottom: 100px;
   }
 
 }
