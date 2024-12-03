@@ -2321,6 +2321,7 @@ section#clients {
   text-align: left;
   padding: 30px 0px;
 }
+
 .flex {
   display: flex;
   justify-content: space-evenly;
@@ -2405,7 +2406,7 @@ section.section:nth-child(2) {
   padding: 0rem 0px;
 }
 
-section.section:nth-child(6) {
+section.section:nth-child(5) {
   padding-bottom: 0;
 }
 
@@ -3296,10 +3297,12 @@ div.footer-flex>p {
 @media (max-width: 1440px) {
   .slide-text {
     width: 40%;
+    background: white;
+    padding: 20px 20px;
   }
 
   .slide-text h2 {
-    font-size: 50px;
+    font-size: 30px;
   }
 
 }
@@ -3307,6 +3310,10 @@ div.footer-flex>p {
 @media (max-width: 1040px) {
   .slide img {
     object-position: right;
+  }
+
+  .slide img:nth-child(3) {
+    object-position: left;
   }
 
   .slide-text {
@@ -3323,6 +3330,15 @@ div.footer-flex>p {
 
   col-service.col-sm-4.col-lg-4.wow.fadeInUp:nth-child(2) {
     padding: 30px 0;
+  }
+
+  .flex {
+    padding-top: 0;
+    gap: 70px;
+  }
+
+  section#clients {
+    padding-bottom: 0;
   }
 
   .col-service:nth-child(2) {
