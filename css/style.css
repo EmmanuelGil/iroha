@@ -3323,6 +3323,9 @@ div.footer-flex>p {
   .slide-text {
     left: 45%;
   }
+  .flex{
+    flex-direction: column;
+  }
 
 }
 
