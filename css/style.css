@@ -1295,7 +1295,7 @@ a#myBtn {
   background-color: #d21045;
   color: #fff;
   border: none;
-  padding: 0 35px;
+  padding: 15px 35px;
   font-size: 46px;
   cursor: pointer;
   font-weight: 900;
@@ -3493,7 +3493,7 @@ div.footer-flex>p {
   }
 
   .slider-nav {
-    right: -35%;
+    right: -25%;
   }
 
 }
