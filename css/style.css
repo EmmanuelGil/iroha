@@ -3494,6 +3494,7 @@ div.footer-flex>p {
 
   .slider-nav {
     right: -25%;
+    left: inherit;
   }
 
 }
