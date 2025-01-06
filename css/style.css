@@ -82,10 +82,9 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.025em;
-  line-height: 2.1428;
   color: #666666;
   -webkit-overflow-scrolling: touch;
 }
@@ -2253,16 +2252,13 @@ section#clients {
 }
 
 .contenedor-grid-2 {
-  background: #f0d9cc;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* Tres columnas con igual tamaño */
-  gap: 10px;
-  /* Espaciado entre las celdas */
+  grid-template-columns: repeat(2, 1fr);
   text-align: left;
-  padding: 20px 20px;
   color: black;
   line-height: normal;
+  align-items: center;
+  padding: 50px 0;
 }
 
 .tabla-grid {
@@ -2276,11 +2272,12 @@ section#clients {
 
 .tabla-grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  align-items: center;
-  background: #f0d9cc;
+  justify-items: start;
   color: black;
+  font-size: 21px;
+  margin-left: 40px;
+  align-content: center;
+  gap: 30px;
 }
 
 .contenedor-grid-2 img {
@@ -2290,22 +2287,38 @@ section#clients {
 .grid-principal {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  /* 5 columnas iguales */
+  background-color: #01619375;
+  margin: 40px 0;
+}
+
+.section-title-1 {
+  background-color: #016193;
+  color: white;
+  text-align: left;
+  padding: 10px 30px;
+  font-weight: bold;
+  font-size: 30px;
+  text-transform: uppercase;
+  line-height: normal;
+  border-radius: 50px;
+  margin: 30px 0;
 }
 
 .cabeza-principal {
   grid-column: span 5;
-  /* Hace que el encabezado ocupe las 5 columnas */
-  background-color: green;
-  /* Fondo verde para el encabezado */
-  color: white;
-  text-align: center;
-  padding: 12px;
+  background-color: white;
+  color: black;
+  text-align: left;
+  padding: 30px 0;
   font-weight: bold;
+  font-size: 30px;
+  text-transform: uppercase;
+  line-height: normal;
+
 }
 
 .item-dato {
-  border: 1px solid black;
+  border: 1px solid white;
   /* Fondo negro para las celdas */
   color: black;
   text-align: center;
@@ -2320,13 +2333,13 @@ section#clients {
 .entrance {
   text-align: left;
   padding: 30px 0px;
+  color: #000;
 }
 
 .flex {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 60px;
 }
 
 .tabla-grid div[colspan="2"] {
@@ -2342,20 +2355,21 @@ section#clients {
 .grid-documents {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* 4 columnas */
-  margin: 0 auto;
+  margin: 30px 0;
   max-width: 100%;
+  background-color: #01619375;
+  line-height: 25px;
 }
 
 .header-documents {
   grid-column: span 4;
-  /* Encabezado ocupa las 4 columnas */
-  background-color: #4CAF50;
-  /* Fondo verde para el encabezado */
-  color: white;
-  text-align: center;
+  background-color: white;
+  color: black;
+  text-align: left;
+  padding: 30px 0;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 
 .doc-item {
@@ -2363,28 +2377,28 @@ section#clients {
   text-align: center;
   font-size: 16px;
   word-wrap: break-word;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .grid-admission {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 2 columnas */
-  /* Espaciado entre las celdas */
+  line-height: normal;
   margin: 0 auto;
   max-width: 100%;
+  background-color: #01619375;
+  margin-bottom: 60px;
 }
 
 .header-admission {
   grid-column: span 2;
-  /* Encabezado ocupa las 2 columnas */
-  background-color: #4CAF50;
-  /* Fondo verde para el encabezado */
-  color: white;
-  text-align: center;
-  padding: 16px;
+  background-color: white;
+  color: black;
+  text-align: left;
+  padding: 30px 0;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 
 .admission-item {
@@ -2394,7 +2408,7 @@ section#clients {
   font-size: 16px;
   word-wrap: break-word;
   padding: 10px 10px;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .col-span-2 {
@@ -2422,7 +2436,7 @@ section.section:nth-child(5) {
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
-  font-size: 16px;
+  font-size: 18px;
   text-align: left;
 }
 
@@ -3328,9 +3342,7 @@ div.footer-flex>p {
     flex-direction: column;
   }
 
-  .grid-admission {
-    padding-bottom: 100px;
-  }
+  .grid-admission {}
 
 }
 
@@ -3423,7 +3435,7 @@ div.footer-flex>p {
   }
 
   .width-400 {
-    width: 300px;
+    width: 400px;
   }
 
   .contenedor-grid-2 {
@@ -3440,6 +3452,11 @@ div.footer-flex>p {
 
   .visible-2 {
     display: grid !important;
+  }
+
+  .tabla-grid-2 {
+    margin-left: 0;
+    padding-top: 50px;
   }
 
 }
@@ -3476,7 +3493,7 @@ div.footer-flex>p {
   }
 
   .slider-nav {
-    right: -25%;
+    right: -35%;
   }
 
 }
