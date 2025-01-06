@@ -3485,7 +3485,7 @@ div.footer-flex>p {
 
 }
 
-@media (max-width: 375px) {
+@media (max-width: 500px) {
   .brand img {
     vertical-align: top;
     margin-right: 0;
