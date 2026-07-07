@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html lang="{{lang}}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{meta_title}}</title>
+  <meta name="description" content="{{meta_description}}">
+  <link rel="canonical" href="{{canonical}}">
+{{hreflang_links}}
+  <meta name="theme-color" content="#d21045">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Iroha Japanese Language School">
+  <meta property="og:title" content="{{meta_title}}">
+  <meta property="og:description" content="{{meta_description}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="{{base}}images/iroha.jpg">
+  <meta property="og:image:alt" content="Iroha Japanese Language School building near JR Hakata Station, Fukuoka">
+  <meta property="og:locale" content="{{og_locale}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{meta_title}}">
+  <meta name="twitter:description" content="{{meta_description}}">
+  <meta name="twitter:image" content="{{base}}images/iroha.jpg">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LanguageSchool",
+    "name": "Iroha Japanese Language School",
+    "url": "{{base}}",
+    "image": "{{base}}images/iroha.jpg",
+    "logo": "{{base}}images/brand.jpg",
+    "email": "fjls@fukuokaschool.com",
+    "telephone": "+81-92-477-2393",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Hakata Modern Building 8F, 1-1-33 Hakataeki-higashi, Hakata-ku",
+      "addressLocality": "Fukuoka",
+      "addressRegion": "Fukuoka",
+      "postalCode": "812-0013",
+      "addressCountry": "JP"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.592382,
+      "longitude": 130.419077
+    },
+    "sameAs": ["https://www.facebook.com/iroha.fjls"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+  <link href="css/ionicons.min.css" rel="stylesheet" media="screen">
+  <link href="css/linearicons.css" rel="stylesheet" media="screen">
+  <link href="css/animate.css" rel="stylesheet" media="screen">
+  <link href="css/magnific-popup.css" rel="stylesheet" media="screen">
+  <link href="css/owl.carousel.css" rel="stylesheet" media="screen">
+  <link href="css/style.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+  <!-- Loader -->
+  <div class="loader">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+
+  <div class="wrapper boxed">
+
+    <!-- Content Click Capture-->
+    <div class="click-capture"></div>
+
+    <!-- Sidebar Menu Mobile-->
+    <div class="menu">
+      <span class="close-menu icon-cross right-boxed" role="button" tabindex="0" aria-label="Close menu"></span>
+      <nav class="nav mobile-menu">
+        <ul class="menu-list right-boxed">
+          <li>
+            <a href="{{home_href}}">{{nav_home}}</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="menu-footer right-boxed">
+        <div class="copy">{{menu_copyright}}</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar boxed">
+
+      <!-- Brand -->
+      <a class="brand" href="{{home_href}}">
+        <img class="brand-desk" alt="Iroha Japanese Language School" src="images/brand.jpg" width="319" height="73">
+        <img class="brand-mob" alt="Iroha Japanese Language School" src="images/brand-respo.jpg" width="66" height="73">
+      </a>
+
+      <a id="myBtn" role="button" tabindex="0">{{contact_btn}}</a>
+      <div id="myModal" class="modal" role="dialog" aria-modal="true">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" role="button" tabindex="0" aria-label="Close">&times;</span>
+          <form class="js-form">
+            <div class="modal-flex">
+              <div class="col-lg-4">
+                <h5>{{modal_city}}</h5>
+                <div>{{modal_email}}</div>
+                <div>{{modal_skype}}</div>
+              </div>
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">
+                <h6>{{modal_call}}</h6>
+                <div class="tel-modal">{{modal_phone}}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-6 col-lg-4">
+                <input class="input-gray" type="text" name="name" required placeholder="Name*" autocomplete="name">
+              </div>
+              <div class="form-group col-sm-6 col-lg-4">
+                <input class="input-gray" type="email" name="email" placeholder="Email" autocomplete="email">
+              </div>
+              <div class="form-group col-sm-12 col-lg-4">
+                <input class="input-gray" type="text" name="subject" placeholder="Subject (Optinal)">
+              </div>
+              <div class="form-group col-sm-12">
+                <textarea class="input-gray" name="message" required placeholder="Message*"></textarea>
+              </div>
+              <div class="col-sm-12"><button type="submit" class="btn-upper btn-yellow btn">{{form_send}}</button>
+              </div>
+            </div>
+            <div class="success-message"><i class="fa fa-check text-primary"></i> {{form_success}}</div>
+            <div class="error-message">{{form_error}}</div>
+          </form>
+        </div>
+      </div>
+
+      <div class="flex-modal">
+
+        <div class="dropdown">
+          <button type="button" class="dropbtn" aria-haspopup="true" aria-expanded="false">{{lang_chip}}</button>
+          <div class="dropdown-content">
+{{lang_links}}
+          </div>
+        </div>
+        <!-- Button -->
+        <button type="button" class="navbar-toggle hidden-lg" aria-label="Open menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Navigation Desktop -->
+      <nav class="nav navigation visible-lg">
+        <ul>
+          <li>
+            <a href="{{home_href}}">{{nav_home}}</a>
+          </li>
+          <li>
+            <a href="#contacts">{{nav_location}}</a>
+          </li>
+          <li class="dropdown">
+            <button type="button" class="dropbtn" aria-haspopup="true" aria-expanded="false">{{nav_language}}</button>
+            <div class="dropdown-content">
+{{lang_links}}
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      <!-- Section About -->
+      <section id="about">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 about-wrap-admission">
+              <div class="section-title-1">{{school_title}}</div>
+              <div class="contenedor-grid-2">
+                <div class="celda-grid">
+                  <img src="images/information/images/1-1_06.jpg"
+                    alt="Iroha Japanese Language School building near JR Hakata Station" width="1100" height="931"
+                    decoding="async">
+                </div>
+                <div class="celda-grid">
+                  <div class="tabla-grid-2">
+                    <div class="encabezado">{{info_capacity_label}}</div>
+                    <div class="contenido">{{info_capacity_value}}</div>
+
+                    <div class="encabezado">{{info_long_label}}</div>
+                    <div class="contenido">{{info_long_value}}</div>
+
+                    <div class="encabezado">{{info_short_label}}</div>
+                    <div class="contenido">{{info_short_value}}</div>
+
+                    <div class="encabezado">{{info_lesson_label}}</div>
+                    <div class="contenido">{{info_lesson_value}}</div>
+
+                    <div class="encabezado">{{info_classes_label}}</div>
+                    <div class="contenido">{{info_classes_value}}</div>
+
+                    <div class="encabezado">{{info_station}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-title-1">{{longterm_title}}</div>
+              <div class="grid-principal">
+                <div class="item-dato">{{lt_1}}</div>
+                <div class="item-dato">{{lt_2}}</div>
+                <div class="item-dato">{{lt_3}}</div>
+                <div class="item-dato">{{lt_4}}</div>
+                <div class="item-dato">{{lt_5}}</div>
+
+                <div class="item-dato">{{lt_6}}</div>
+                <div class="item-dato">{{lt_7}}</div>
+                <div class="item-dato">{{lt_8}}</div>
+                <div class="item-dato">{{lt_9}}</div>
+                <div class="item-dato">{{lt_10}}</div>
+
+                <div class="item-dato">{{lt_11}}</div>
+                <div class="item-dato">{{lt_12}}</div>
+                <div class="item-dato">{{lt_13}}</div>
+                <div class="item-dato">{{lt_14}}</div>
+                <div class="item-dato">{{lt_15}}</div>
+
+                <div class="item-dato">{{lt_16}}</div>
+                <div class="item-dato">{{lt_17}}</div>
+                <div class="item-dato">{{lt_18}}</div>
+                <div class="item-dato">{{lt_19}}</div>
+                <div class="item-dato">{{lt_20}}</div>
+
+                <div class="item-dato">{{lt_21}}</div>
+                <div class="item-dato">{{lt_22}}</div>
+                <div class="item-dato">{{lt_23}}</div>
+                <div class="item-dato">{{lt_24}}</div>
+                <div class="item-dato">{{lt_25}}</div>
+              </div>
+              <div class="entrance">
+                {{entrance_block}}
+              </div>
+              <div class="section-title-1">{{docs_title}}</div>
+              <div class="grid-documents visible-1">
+                <div class="doc-item">{{docd_1}}</div>
+                <div class="doc-item width-400">{{docd_2}}</div>
+                <div class="doc-item">{{docd_3}}</div>
+                <div class="doc-item">{{docd_4}}</div>
+                <div class="doc-item">{{docd_5}}</div>
+                <div class="doc-item">{{docd_6}}</div>
+                <div class="doc-item">{{docd_7}}</div>
+                <div class="doc-item">{{docd_8}}</div>
+                <div class="doc-item">{{docd_9}}</div>
+                <div class="doc-item">{{docd_10}}</div>
+                <div class="doc-item">{{docd_11}}</div>
+                <div class="doc-item">{{docd_12}}</div>
+                <div class="doc-item">{{docd_13}}</div>
+                <div class="doc-item">{{docd_14}}</div>
+                <div class="doc-item">{{docd_15}}</div>
+                <div class="doc-item">{{docd_16}}</div>
+                <div class="doc-item">{{docd_17}}</div>
+                <div class="doc-item">{{docd_18}}</div>
+                <div class="doc-item">{{docd_19}}</div>
+                <div class="doc-item">{{docd_20}}</div>
+                <div class="doc-item">{{docd_21}}</div>
+                <div class="doc-item">{{docd_22}}</div>
+                <div class="doc-item">{{docd_23}}</div>
+                <div class="doc-item">{{docd_24}}</div>
+                <div class="doc-item">{{docd_25}}</div>
+                <div class="doc-item">{{docd_26}}</div>
+                <div class="doc-item">{{docd_27}}</div>
+                <div class="doc-item">{{docd_28}}</div>
+              </div>
+              <div class="grid-documents visible-2">
+                <div class="doc-item">{{docm_1}}</div>
+                <div class="doc-item width-400">{{docm_2}}</div>
+                <div class="doc-item">{{docm_3}}</div>
+                <div class="doc-item">{{docm_4}}</div>
+                <div class="doc-item">{{docm_5}}</div>
+                <div class="doc-item">{{docm_6}}</div>
+                <div class="doc-item">{{docm_7}}</div>
+                <div class="doc-item">{{docm_8}}</div>
+                <div class="doc-item">{{docm_9}}</div>
+                <div class="doc-item">{{docm_10}}</div>
+                <div class="doc-item">{{docm_11}}</div>
+                <div class="doc-item">{{docm_12}}</div>
+                <div class="doc-item">{{docm_13}}</div>
+                <div class="doc-item">{{docm_14}}</div>
+                <div class="doc-item">{{docm_15}}</div>
+                <div class="doc-item">{{docm_16}}</div>
+                <div class="doc-item">{{docm_17}}</div>
+                <div class="doc-item">{{docm_18}}</div>
+                <div class="doc-item">{{docm_19}}</div>
+                <div class="doc-item">{{docm_20}}</div>
+                <div class="doc-item">{{docm_21}}</div>
+                <div class="doc-item">{{docm_22}}</div>
+                <div class="doc-item">{{docm_23}}</div>
+                <div class="doc-item">{{docm_24}}</div>
+                <div class="doc-item">{{docm_25}}</div>
+                <div class="doc-item">{{docm_26}}</div>
+                <div class="doc-item">{{docm_27}}</div>
+                <div class="doc-item">{{docm_28}}</div>
+              </div>
+              <div class="entrance">
+                {{docs_note}}
+              </div>
+              <div class="section-title-1">{{shortterm_title}}</div>
+              <div class="grid-admission">
+
+                <div class="admission-item col-span-2">{{st_requirements}}</div>
+
+                <div class="admission-item">{{st_intake}}</div>
+                <div class="admission-item">{{st_intake_text}}</div>
+
+                <div class="admission-item col-span-2">{{st_process}}</div>
+
+                <div class="admission-item">{{st_abroad_label}}</div>
+                <div class="admission-item">{{st_abroad_text}}</div>
+
+                <div class="admission-item">{{st_japan_label}}</div>
+                <div class="admission-item">{{st_japan_text}}</div>
+
+                <div class="admission-item col-span-2">{{st_docs}}</div>
+              </div>
+              <div class="flex">
+                <div><a class="checksheet" href="docs/学費案内ーIROHA(2025年度)英語.pdf" target="_blank">{{fee_btn_1}}</a></div>
+                <div><a class="checksheet" href="docs/学費案内ーIROHA(2025年度)日本語.pdf" target="_blank">{{fee_btn_2}}</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section Contacts -->
+      <section id="contacts">
+        <div class="section">
+          <section>
+            <div class="container">
+              <div class="row col-md-12" style="font-size: 20px;">
+                <h2 class="section-title">{{location_title}}</h2>
+                <p>{{location_address}}</p>
+                <p>{{location_tel}}</p>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-12 between-img">
+                  <img style="max-width: 100%;" src="images/gallery.jpg"
+                    alt="Collage of school activities: sports day, tea ceremony and speech contest" width="570"
+                    height="571" loading="lazy" decoding="async"><img style="max-width: 100%;"
+                    src="images/gallery2.jpg"
+                    alt="Collage of student life at Iroha Japanese Language School in Fukuoka" width="415" height="570"
+                    loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section-message">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="section-info map-responsive">
+                    <center>
+                      <iframe title="Iroha Japanese Language School on Facebook"
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Firoha.fjls&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                        width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowfullscreen="true" loading="lazy"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </center>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="section-info">
+                    <div class="map-responsive">
+                      <iframe title="Map: Iroha Japanese Language School, Hakata, Fukuoka"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.4979671047536!2d130.4190766763154!3d33.59238184187123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35419067f6f3f1a9%3A0x44af8d1b93892454!2sIrohanihongo%20School!5e0!3m2!1ses!2sca!4v1706155672543!5m2!1ses!2sca"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+    <!-- Footer -->
+    <footer id="footer" class="footer section">
+      <div class="footer-flex">
+        <div class="flex-item">{{footer_copyright}}</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

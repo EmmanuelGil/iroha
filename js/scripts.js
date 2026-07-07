@@ -29,21 +29,19 @@
 
 
 
+	/* Hide loader as soon as the DOM is ready (window load as fallback) */
+
+	function hideLoader() {
+		$('.loader').fadeOut(200);
+	}
+
+	$(function () { hideLoader(); });
+
 	$(window).on('load', function () {
 
-
-
-		/* Hide Loader  */
-
-
-
-		$('.loader').fadeOut(200);
-
-
+		hideLoader();
 
 		/* Wow Init */
-
-
 
 		if ($('.wow').length > 0) {
 			var wow = new WOW({
@@ -57,31 +55,63 @@
 	});
 
 
-	// Get the modal
+	/* Contact modal (keyboard accessible) */
+
 	var modal = document.getElementById("myModal");
-
-	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn");
+	var span = modal ? modal.querySelector(".close") : null;
 
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks the button, open the modal 
-	btn.onclick = function () {
-		modal.style.display = "block";
+	function openModal() {
+		if (modal) modal.style.display = "block";
 	}
 
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function () {
-		modal.style.display = "none";
+	function closeModal() {
+		if (modal) modal.style.display = "none";
 	}
 
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function (event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
+	if (btn) {
+		btn.addEventListener('click', openModal);
+		btn.addEventListener('keydown', function (e) {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				openModal();
+			}
+		});
 	}
+
+	if (span) {
+		span.addEventListener('click', closeModal);
+		span.addEventListener('keydown', function (e) {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				closeModal();
+			}
+		});
+	}
+
+	window.addEventListener('click', function (event) {
+		if (event.target === modal) closeModal();
+	});
+
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape') closeModal();
+	});
+
+
+	/* Language dropdown: toggle on click/tap (hover alone fails on touch) */
+
+	$('.dropdown > .dropbtn').on('click', function (e) {
+		e.stopPropagation();
+		var $dropdown = $(this).closest('.dropdown');
+		var isOpen = $dropdown.hasClass('open');
+		$('.dropdown').removeClass('open').find('.dropbtn').attr('aria-expanded', 'false');
+		$dropdown.toggleClass('open', !isOpen);
+		$(this).attr('aria-expanded', String(!isOpen));
+	});
+
+	$(document).on('click', function () {
+		$('.dropdown').removeClass('open').find('.dropbtn').attr('aria-expanded', 'false');
+	});
 
 
 	/*-------------------------------------------------------------------------------
@@ -335,88 +365,6 @@
 
 
 	/*-------------------------------------------------------------------------------
-	  Page Piling - Full Screen Sections 
-	-------------------------------------------------------------------------------*/
-
-
-
-	if ($('.pagepiling').length > 0) {
-
-
-
-		/* Page Piling Init */
-
-
-
-		$('.pagepiling').pagepiling({
-			scrollingSpeed: 280,
-			menu: '.menu-pagepiling',
-			anchors: ['main', 'about', 'projects', 'partners', 'testimonials', 'contacts'],
-			afterLoad: function (anchorLink, index) {
-				if ($('.pp-scrollable:nth-child(' + (index) + ')').hasClass(('section-white'))) {
-					$('.navbar').removeClass('navbar-white');
-					$('#pp-nav').removeClass('white');
-					$('.copy-bottom').removeClass('white');
-					$('.lang-bottom').removeClass('white');
-				}
-				else {
-					$('.navbar').addClass('navbar-white');
-					$('#pp-nav').addClass('white');
-					$('.copy-bottom').addClass('white');
-					$('.lang-bottom').addClass('white');
-				}
-
-			}
-		});
-
-
-		/* Hide Mobile Menu On Anchor Click*/
-
-
-
-
-		$('.menu-pagepiling ul li a').on('click', function () {
-			hideMenu();
-		});
-
-
-
-
-
-		/* Scroll Navbar Into Sections  */
-
-
-
-		$('.pp-scrollable').on('scroll', function () {
-			var scrollTop = $(this).scrollTop();
-			if (scrollTop > 0) {
-				$('.navbar-2').removeClass('navbar-white');
-			}
-			else {
-				$('.navbar-2').addClass('navbar-white');
-			}
-		});
-
-
-
-		/* Add Arrows On Navigation  */
-
-
-
-		$('#pp-nav').prepend('<div class="pp-nav-up icon-chevron-up"></div>').append('<div class="pp-nav-down icon-chevron-down"></div>').addClass('white right-boxed hidden-xs');
-
-		$('.pp-nav-up').on('click', function () {
-			$.fn.pagepiling.moveSectionUp();
-		});
-
-		$('.pp-nav-down').on('click', function () {
-			$.fn.pagepiling.moveSectionDown();
-		});
-	}
-
-
-
-	/*-------------------------------------------------------------------------------
 	  Change Bacgkround On Project Section
 	-------------------------------------------------------------------------------*/
 
@@ -435,23 +383,26 @@
 
 
 
+	/* GitHub Pages cannot run PHP, so the form opens the visitor's e-mail
+	   client with the message pre-filled instead of posting to mail.php. */
+
+	var CONTACT_EMAIL = 'fjls@fukuokaschool.com';
+
 	if ($('.js-form').length > 0) {
 		$('.js-form').each(function () {
 			$(this).validate({
 				errorClass: 'error wobble-error',
 				submitHandler: function (form) {
-					$.ajax({
-						type: "POST",
-						url: "mail.php",
-						data: $(form).serialize(),
-						success: function () {
-							$('.success-message').show();
-						},
-
-						error: function () {
-							$('.error-message').show();
-						}
-					});
+					var $form = $(form);
+					var name = $form.find('[name="name"]').val() || '';
+					var email = $form.find('[name="email"]').val() || '';
+					var subject = $form.find('[name="subject"]').val() || 'Website contact';
+					var message = $form.find('[name="message"]').val() || '';
+					var body = message + '\n\n— ' + name + (email ? ' <' + email + '>' : '');
+					window.location.href = 'mailto:' + CONTACT_EMAIL +
+						'?subject=' + encodeURIComponent(subject) +
+						'&body=' + encodeURIComponent(body);
+					$('.success-message').show();
 				}
 			});
 		});

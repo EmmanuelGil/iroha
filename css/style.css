@@ -63,17 +63,9 @@
 
 
 
-@import url('bootstrap.css');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
-@import url('ionicons.min.css');
-@import url('linearicons.css');
-@import url('animate.css');
-@import url('magnific-popup.css');
-@import url('jquery.pagepiling.css');
-@import url('owl.carousel.css');
-@import url('settings.css');
-@import url('layers.css');
-@import url('navigation.css');
+/* Vendor styles and web fonts are loaded as parallel <link> tags in the HTML
+   head (see src/templates). Keeping them out of @import avoids the serial
+   request waterfall and the 404s of the removed rev-slider/pagepiling files. */
 
 
 html {
@@ -452,6 +444,15 @@ form.js-form {}
   background: #fff;
   color: #4b4b4b;
   text-align: center;
+  /* Failsafe: hide the loader even if JavaScript never runs */
+  animation: loader-failsafe 0.4s ease 2.5s forwards;
+}
+
+@keyframes loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .spinner {
@@ -619,13 +620,20 @@ form.js-form {}
   background-color: #f1f1f1
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown.open .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn,
+.dropdown.open .dropbtn {
   background-color: #d21045;
   color: #fff;
+}
+
+.dropdown-content a[aria-current="true"] {
+  font-weight: bold;
+  color: #d21045;
 }
 
 .navbar {
@@ -1099,128 +1107,39 @@ a#myBtn {
 
 
 
-.custom-slider-container {
+/*-------------------------------------------------------------------------------
+  Sliders (shared component, see js/sliders.js)
+-------------------------------------------------------------------------------*/
+
+.js-slider {
   position: relative;
-  width: 100%;
-  max-width: 80%;
-  margin: auto;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  touch-action: pan-y;
 }
 
-/* Contenedor de imágenes */
-.custom-slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Cada imagen ocupa el 100% del contenedor */
-.custom-slider-wrapper img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* Botones de navegación */
-.custom-prev-btn,
-.custom-next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-}
-
-.custom-prev-btn {
-  left: 10px;
-}
-
-.custom-next-btn {
-  right: 10px;
-}
-
-.custom-prev-btn:hover,
-.custom-next-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-
-
-
-.alt-slider-box {
-  position: relative;
-  width: 100%;
-  max-width: 80%;
-  margin: auto;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Contenedor de imágenes */
-.alt-slider-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Cada imagen ocupa el 100% del contenedor */
-.alt-slider-track img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* Botones de navegación */
-.alt-prev-btn,
-.alt-next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(50, 50, 50, 0.5);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-}
-
-.alt-prev-btn {
-  left: 10px;
-}
-
-.alt-next-btn {
-  right: 10px;
-}
-
-.alt-prev-btn:hover,
-.alt-next-btn:hover {
-  background-color: rgba(50, 50, 50, 0.8);
-}
-
-
-
-
-
+/* Hero slider */
 
 .slider {
   position: relative;
   height: 80vh;
+  min-height: 420px;
   overflow: hidden;
 }
 
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
 .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  flex: 0 0 100%;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  transition: all 0.5s ease-in-out;
 }
 
 .slide img {
@@ -1228,6 +1147,8 @@ a#myBtn {
   height: 100%;
   object-fit: cover;
   object-position: top;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .slide-text {
@@ -1273,31 +1194,162 @@ a#myBtn {
   transition-delay: 0.2s;
 }
 
-.slider-nav {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+/* Photo sliders (school life / events) */
+
+.photo-slider {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  aspect-ratio: 4 / 3;
 }
 
-.prev,
-.next {
+.photo-slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+.photo-slider-track img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Generated arrows */
+
+.sl-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.25s, color 0.25s, transform 0.25s;
+  z-index: 3;
+  padding: 0;
+}
+
+.sl-prev {
+  left: 14px;
+}
+
+.sl-next {
+  right: 14px;
+}
+
+.sl-arrow:hover {
   background-color: #d21045;
   color: #fff;
-  border: none;
-  padding: 15px 35px;
-  font-size: 46px;
-  cursor: pointer;
-  font-weight: 900;
-  margin: 0px 10px;
-  transform: scale(0.7);
-  box-shadow: 4px 4px 20px 0px #00000061;
-  border-radius: 50px;
 }
 
-.prev:hover,
-.next:hover {
-  background-color: #a70c37;
+.sl-arrow:focus-visible {
+  outline: 3px solid #d21045;
+  outline-offset: 2px;
+}
+
+/* Generated dots */
+
+.sl-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.sl-dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.25s;
+}
+
+.sl-dot.active {
+  background-color: #d21045;
+  border-color: #fff;
+  transform: scale(1.25);
+}
+
+.sl-dot:focus-visible {
+  outline: 3px solid #d21045;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .slider-track,
+  .photo-slider-track {
+    transition: none;
+  }
+}
+
+/* About section badges (was inline styles) */
+
+.about-wrap {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.about-wrap-admission {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.about-badge {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.about-badge-1 {
+  background-color: #d21045;
+}
+
+.about-badge-2 {
+  background-color: #3b84b9;
+}
+
+.about-badge-3 {
+  background-color: #8f9612;
+}
+
+.about-badge-4 {
+  background-color: #cc5573;
+}
+
+.about-badge-5 {
+  background-color: #9f5594;
+}
+
+.about-badge-6 {
+  background-color: #d47c00;
 }
 
 
@@ -3317,7 +3369,7 @@ div.footer-flex>p {
     object-position: right;
   }
 
-  .slide img:nth-child(3) {
+  .slide:nth-child(3) img {
     object-position: left;
   }
 
@@ -3389,15 +3441,35 @@ div.footer-flex>p {
   }
 
   .slide-text h2 {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .slide-text {
-    width: 80%;
+    width: 85%;
+    left: 50%;
   }
 
-  .slider-nav {
-    right: -20%;
+  .slider {
+    height: 62vh;
+    min-height: 380px;
+  }
+
+  .photo-slider {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .sl-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .sl-prev {
+    left: 8px;
+  }
+
+  .sl-next {
+    right: 8px;
   }
 
   .contenedor-grid {
@@ -3481,11 +3553,6 @@ div.footer-flex>p {
     vertical-align: top;
     margin-right: 0;
     width: 50%;
-  }
-
-  .slider-nav {
-    right: -25%;
-    left: inherit;
   }
 
 }
