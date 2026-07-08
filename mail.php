@@ -3,7 +3,7 @@
 // Requires PHP hosting (does nothing on GitHub Pages).
 header('Content-Type: application/json; charset=utf-8');
 
-$to = 'fjls@fukuokaschool.com';
+$to = 'fjls@fukuokaschool.com, yonjan@fukuokaschool.com';
 
 $name    = trim($_POST['name'] ?? '');
 $email   = trim($_POST['email'] ?? '');
