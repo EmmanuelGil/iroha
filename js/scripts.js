@@ -383,13 +383,9 @@
 
 
 
-	/* The site is static (no PHP), so the form posts to FormSubmit.co, which
-	   forwards every submission to the school's inbox. NOTE: the very first
-	   submission triggers a one-time activation e-mail to CONTACT_EMAIL that
-	   must be confirmed before messages start arriving. */
-
-	var CONTACT_EMAIL = 'fjls@fukuokaschool.com';
-	var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
+	/* The form posts to mail.php, which e-mails the submission to the school
+	   inbox. It needs PHP hosting: on the final server it just works; on
+	   GitHub Pages the error message is shown instead. */
 
 	if ($('.js-form').length > 0) {
 		$('.js-form').each(function () {
@@ -401,18 +397,8 @@
 					$('.success-message, .error-message').hide();
 					$.ajax({
 						type: 'POST',
-						url: FORM_ENDPOINT,
-						dataType: 'json',
-						data: {
-							name: $form.find('[name="name"]').val(),
-							email: $form.find('[name="email"]').val(),
-							subject: $form.find('[name="subject"]').val(),
-							message: $form.find('[name="message"]').val(),
-							_subject: 'Website contact — Iroha Japanese Language School',
-							_template: 'table',
-							_captcha: 'false',
-							_honey: $form.find('[name="_honey"]').val()
-						},
+						url: 'mail.php',
+						data: $form.serialize(),
 						success: function () {
 							$('.success-message').show();
 							form.reset();
