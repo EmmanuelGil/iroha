@@ -34,6 +34,7 @@
 
     root.setAttribute('role', 'region');
     root.setAttribute('aria-roledescription', 'carousel');
+    if (!root.hasAttribute('tabindex')) root.setAttribute('tabindex', '0');
     root.classList.add('js-slider');
     slides.forEach(function (s, i) {
       s.setAttribute('role', 'group');
