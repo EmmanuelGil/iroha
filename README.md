@@ -35,8 +35,10 @@ everything else comes from the i18n JSON of each language.
 
 ## Notes
 
-- The contact form opens the visitor's e-mail client (`mailto:`) because GitHub
-  Pages cannot run PHP.
+- The contact form posts to FormSubmit.co, which forwards submissions to
+  fjls@fukuokaschool.com (works on any static hosting, no PHP needed). The
+  first submission ever sends a one-time activation e-mail to that inbox —
+  it must be confirmed once before messages are delivered.
 - Sliders are powered by `js/sliders.js` (dependency-free: swipe, dots, arrows,
   keyboard, autoplay). Markup: `<div data-slider data-autoplay="6000"><div class="...-track">…`
 - If the site moves to its own domain, update `BASE` in `build.mjs`, rebuild,

@@ -383,10 +383,13 @@
 
 
 
-	/* GitHub Pages cannot run PHP, so the form opens the visitor's e-mail
-	   client with the message pre-filled instead of posting to mail.php. */
+	/* The site is static (no PHP), so the form posts to FormSubmit.co, which
+	   forwards every submission to the school's inbox. NOTE: the very first
+	   submission triggers a one-time activation e-mail to CONTACT_EMAIL that
+	   must be confirmed before messages start arriving. */
 
 	var CONTACT_EMAIL = 'fjls@fukuokaschool.com';
+	var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
 
 	if ($('.js-form').length > 0) {
 		$('.js-form').each(function () {
@@ -394,15 +397,33 @@
 				errorClass: 'error wobble-error',
 				submitHandler: function (form) {
 					var $form = $(form);
-					var name = $form.find('[name="name"]').val() || '';
-					var email = $form.find('[name="email"]').val() || '';
-					var subject = $form.find('[name="subject"]').val() || 'Website contact';
-					var message = $form.find('[name="message"]').val() || '';
-					var body = message + '\n\n— ' + name + (email ? ' <' + email + '>' : '');
-					window.location.href = 'mailto:' + CONTACT_EMAIL +
-						'?subject=' + encodeURIComponent(subject) +
-						'&body=' + encodeURIComponent(body);
-					$('.success-message').show();
+					var $submit = $form.find('[type="submit"]').prop('disabled', true);
+					$('.success-message, .error-message').hide();
+					$.ajax({
+						type: 'POST',
+						url: FORM_ENDPOINT,
+						dataType: 'json',
+						data: {
+							name: $form.find('[name="name"]').val(),
+							email: $form.find('[name="email"]').val(),
+							subject: $form.find('[name="subject"]').val(),
+							message: $form.find('[name="message"]').val(),
+							_subject: 'Website contact — Iroha Japanese Language School',
+							_template: 'table',
+							_captcha: 'false',
+							_honey: $form.find('[name="_honey"]').val()
+						},
+						success: function () {
+							$('.success-message').show();
+							form.reset();
+						},
+						error: function () {
+							$('.error-message').show();
+						},
+						complete: function () {
+							$submit.prop('disabled', false);
+						}
+					});
 				}
 			});
 		});
