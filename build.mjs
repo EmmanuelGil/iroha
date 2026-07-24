@@ -14,14 +14,24 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const BASE = 'https://emmanuelgil.github.io/iroha/';
 
+// Each language only pulls the Noto Serif/Sans subset it actually needs
+// (CJK webfonts are heavy) — see fontsUrl().
 const LANGS = [
-  { code: 'en', home: 'index.html', admission: 'admission-process.html', ogLocale: 'en_US', chip: 'EN', label: 'English' },
-  { code: 'ja', home: 'japanese.html', admission: 'admission-process-jp.html', ogLocale: 'ja_JP', chip: 'JP', label: '日本語' },
-  { code: 'es', home: 'spanish.html', admission: 'admission-process-es.html', ogLocale: 'es_ES', chip: 'ES', label: 'Español' },
-  { code: 'ko', home: 'korean.html', admission: 'admission-process-ko.html', ogLocale: 'ko_KR', chip: 'KO', label: '한국어' },
-  { code: 'vi', home: 'vietnamese.html', admission: 'admission-process-vi.html', ogLocale: 'vi_VN', chip: 'VI', label: 'Tiếng Việt' },
-  { code: 'zh', home: 'chinese.html', admission: 'admission-process-zh.html', ogLocale: 'zh_CN', chip: 'ZH', label: '中文' },
+  { code: 'en', home: 'index.html', admission: 'admission-process.html', ogLocale: 'en_US', chip: 'EN', label: 'English', script: 'latin' },
+  { code: 'ja', home: 'japanese.html', admission: 'admission-process-jp.html', ogLocale: 'ja_JP', chip: 'JP', label: '日本語', script: 'JP' },
+  { code: 'es', home: 'spanish.html', admission: 'admission-process-es.html', ogLocale: 'es_ES', chip: 'ES', label: 'Español', script: 'latin' },
+  { code: 'ko', home: 'korean.html', admission: 'admission-process-ko.html', ogLocale: 'ko_KR', chip: 'KO', label: '한국어', script: 'KR' },
+  { code: 'vi', home: 'vietnamese.html', admission: 'admission-process-vi.html', ogLocale: 'vi_VN', chip: 'VI', label: 'Tiếng Việt', script: 'latin' },
+  { code: 'zh', home: 'chinese.html', admission: 'admission-process-zh.html', ogLocale: 'zh_CN', chip: 'ZH', label: '中文', script: 'SC' },
 ];
+
+function fontsUrl(script) {
+  const families = ['family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400', 'family=Noto+Sans:ital,wght@0,300..700;1,300..700'];
+  if (script !== 'latin') {
+    families.push(`family=Noto+Serif+${script}:wght@400;600;700`, `family=Noto+Sans+${script}:wght@300..700`);
+  }
+  return `https://fonts.googleapis.com/css2?${families.join('&')}&display=swap`;
+}
 
 // Home canonical for the default language is the site root.
 const homeUrl = (l) => l.code === 'en' ? BASE : BASE + l.home;
@@ -64,6 +74,7 @@ for (const l of LANGS) {
     meta_description: i18n.meta.description,
     home_href: l.home,
     admission_href: l.admission,
+    fonts_url: fontsUrl(l.script),
   };
 
   const homeVars = {
